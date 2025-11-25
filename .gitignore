@@ -1,0 +1,12 @@
+venv/ 
+__pycache__/ 
+*.pyc 
+*.pyo 
+*.pyd 
+*.whl 
+*.gguf 
+*.dll 
+Llama_project/models/ 
+.vscode/ 
+.env 
+*.log 

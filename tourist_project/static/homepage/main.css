@@ -1,0 +1,175 @@
+:root{
+    --accent:#2b7a4b;
+    --muted:#667;
+    --bg:#f7faf7;
+    --card:#ffffff;
+    --glass: rgba(255,255,255,0.7);
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+*{
+    box-sizing:border-box
+}
+
+body{
+    margin:0;
+    background:var(--bg);
+    color:#111;
+    display:flex;
+    flex-direction:column;
+    min-height:100vh
+}
+
+header{
+    height:220px;
+    background-image: url("marita-kavelashvili-ugnrXk1129g-unsplash.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+}
+
+.header-inner{
+    position:relative;
+    z-index:1;
+    color:black;
+    text-align:center;
+    background-color:#f7faf7;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.title{
+    font-size:1.6rem;
+    font-weight:700;
+    margin:0
+}
+
+.subtitle{
+    font-size:0.95rem;
+    opacity:0.95;
+    margin-top:6px
+}
+
+main{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:20px
+}
+
+.container{
+    width:100%;
+    max-width:900px
+}
+
+.input-row{
+    display:flex;
+    gap:10px;
+    margin:18px 0
+}
+
+.input-row input[type="text"]{
+    flex:1;
+    padding:12px 14px;
+    border-radius:12px;
+    border:1px solid #d7e6da;
+    background:var(--card);
+    outline:none;
+    font-size:1rem
+}
+
+.input-row button{
+    padding:11px 16px;
+    border-radius:12px;
+    border:0;
+    background:var(--accent);
+    color:white;
+    font-weight:600;
+    cursor:pointer
+}
+.input-row button:active{
+    transform:translateY(1px)
+}
+
+.chat{
+    background:var(--card);
+    border-radius:12px;
+    padding:14px;
+    height:420px;
+    overflow:auto;
+    border:1px solid #e6efe6
+}
+
+.msg{
+    display:flex;
+    margin:8px 0;
+    gap:10px
+}
+
+.msg.bot{
+    justify-content:flex-start
+}
+
+.msg.user{
+    justify-content:flex-end
+}
+
+.bubble{
+    max-width:75%;
+    padding:10px 12px;
+    border-radius:12px;
+    background:var(--glass);
+    backdrop-filter:blur(4px);
+    font-size:0.95rem
+}
+
+.msg.bot .bubble{
+    background:#f1f7f1;
+    border:1px solid #e0efe0
+}
+
+.msg.user .bubble{
+    background:var(--accent);
+    color:white
+}
+
+.meta{
+    font-size:0.75rem;
+    color:var(--muted);
+    margin-top:6px
+}
+
+footer{
+    padding:14px 18px;
+    background:#fff;
+    border-top:1px solid #e6efe6
+}
+
+.footer-inner{
+    max-width:900px;
+    margin:0 auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px
+}
+
+.links a{
+    margin-left:8px;
+    text-decoration:none;
+    color:var(--accent);
+    font-weight:600
+}
+
+@media (max-width:600px){
+    header{height:160px}
+    .chat{height:360px}
+    .title{font-size:1.2rem}
+    .input-row{flex-direction:column}
+    .input-row button{width:100%}
+}

@@ -1,0 +1,49 @@
+{% load static %}
+
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Рекомендации заповедников — ChatBot</title>
+  <link rel="stylesheet" href="{% static 'homepage/main.css' %}">
+  
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <h1 class="title">Рекомендации заповедников</h1>
+      <div class="subtitle">Подбор заповедников с учётом геополитических факторов</div>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <form id="queryForm" autocomplete="off" onsubmit="return false;">
+          {% csrf_token %}  <!-- ← Добавь эту строку -->
+          <div class="input-row">
+              <input id="queryInput" type="text" placeholder="Опишите, что хотите увидеть (напр. северные заповедники, безопасные зоны рядом)" aria-label="Запрос к чат-боту" />
+              <button id="sendBtn" type="submit">Отправить</button>
+          </div>
+      </form>
+
+      <section class="chat" id="chatArea" aria-live="polite" aria-atomic="false">
+        <div class="msg bot">
+          <div class="bubble">Здравствуйте! Опишите, какие заповедники вас интересуют — я подберу варианты с учётом геополитических факторов.</div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© Проект «Заповедник-чат»</div>
+      <div class="links">
+        <span>Мы в:</span>
+        <a href="https://github.com/MrRi0/reserve-project" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
+  <script src="{% static 'homepage/script.js' %}"></script> 
+</body>
+</html>
