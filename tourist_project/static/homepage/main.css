@@ -1,5 +1,5 @@
 :root{
-    --accent:#2b7a4b;
+    --accent:#2b6f7a;
     --muted:#667;
     --bg:#f7faf7;
     --card:#ffffff;
@@ -22,7 +22,7 @@ body{
 
 header{
     height:220px;
-    background-image: url("marita-kavelashvili-ugnrXk1129g-unsplash.jpg");
+    background-image: url("ural-1625764_1280.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

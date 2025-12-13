@@ -31,7 +31,6 @@ async function sendToLlama(question) {
         
         const data = await response.json();
         
-        // Удаляем "думает..." и показываем ответ
         chat.removeChild(chat.lastChild);
         
         if (data.answer) {
@@ -46,7 +45,6 @@ async function sendToLlama(question) {
     }
 }
 
-// Обработчики событий
 sendBtn.addEventListener('click', function() {
     const question = input.value.trim();
     if (question) {

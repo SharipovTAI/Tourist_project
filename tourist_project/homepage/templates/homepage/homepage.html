@@ -19,7 +19,7 @@
   <main>
     <div class="container">
       <form id="queryForm" autocomplete="off" onsubmit="return false;">
-          {% csrf_token %}  <!-- ← Добавь эту строку -->
+          {% csrf_token %}  
           <div class="input-row">
               <input id="queryInput" type="text" placeholder="Опишите, что хотите увидеть (напр. северные заповедники, безопасные зоны рядом)" aria-label="Запрос к чат-боту" />
               <button id="sendBtn" type="submit">Отправить</button>
@@ -40,7 +40,7 @@
       <div>© Проект «Заповедник-чат»</div>
       <div class="links">
         <span>Мы в:</span>
-        <a href="https://github.com/MrRi0/reserve-project" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/SharipovTAI/Tourist_project.git" target="_blank" rel="noopener">GitHub</a>
       </div>
     </div>
   </footer>
