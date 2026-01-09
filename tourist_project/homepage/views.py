@@ -11,12 +11,8 @@ from llama_cpp import Llama
 from sentence_transformers import SentenceTransformer
 
 
-# ==================== GLOBAL ====================
-
 _rag_assistant = None
 
-
-# ==================== ASSISTANT ====================
 
 class ReserveRAGAssistant:
     """
@@ -25,16 +21,13 @@ class ReserveRAGAssistant:
     """
 
     def __init__(self, model_path, db_path):
-        # ---------- Load database ----------
         with open(db_path, "r", encoding="utf-8") as f:
             self.reserves = json.load(f)["reserves"]
 
-        # ---------- Embedding model ----------
         self.embedder = SentenceTransformer(
             "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
         )
 
-        # ---------- Build vector index ----------
         self.texts = []
         self.meta = []
 
@@ -62,7 +55,6 @@ class ReserveRAGAssistant:
             verbose=False,
         )
 
-    # ==================== CORE ====================
 
     def ask(self, question: str) -> str:
         intent = self._detect_intent(question)
@@ -80,7 +72,6 @@ class ReserveRAGAssistant:
 
         return self._generate_answer(question, reserves[0])
 
-    # ==================== INTENTS ====================
 
     def _detect_intent(self, q: str) -> str:
         q = q.lower()
@@ -93,7 +84,6 @@ class ReserveRAGAssistant:
 
         return "info"
 
-    # ==================== SEARCH ====================
 
     def _semantic_search(self, query: str, top_k=3):
         q_emb = self.embedder.encode([query]).astype("float32")
@@ -108,7 +98,6 @@ class ReserveRAGAssistant:
 
         return results
 
-    # ==================== GENERATION ====================
 
     def _generate_answer(self, question, reserve):
         context = self._format_reserve(reserve)
@@ -160,7 +149,6 @@ class ReserveRAGAssistant:
         out = self.llm(prompt, max_tokens=400)
         return out["choices"][0]["text"].strip()
 
-    # ==================== HELPERS ====================
 
     def _greeting(self):
         return (
@@ -192,7 +180,6 @@ class ReserveRAGAssistant:
         return "\n".join(lines)
 
 
-# ==================== INIT ====================
 
 def get_assistant():
     global _rag_assistant
@@ -207,7 +194,6 @@ def get_assistant():
     return _rag_assistant
 
 
-# ==================== DJANGO VIEWS ====================
 
 @csrf_exempt
 def ask_llama(request):
