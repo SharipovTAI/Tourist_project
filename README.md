@@ -2,10 +2,10 @@ AI-чат-бот по заповедникам России
 (Django + LLaMA + RAG, офлайн)
 
 Локальный AI-чат-бот, который отвечает на вопросы о заповедниках России
-строго на основе загруженного Word-файла, без облачных API и интернета.
+строго на основе загруженного JSON-файла, без облачных API и интернета.
 
 Проект реализует подход RAG (Retrieval-Augmented Generation)
-на базе Meta LLaMA 3.1 и SentenceTransformer.
+на базе mistral-7b-instruct-v0.2.Q4_K_M и SentenceTransformer.
 
 
 Описание проекта:
@@ -33,13 +33,9 @@ Backend:
    Python 3.10.x
    Django
 AI / ML:
-   Meta-LLaMA-3.1-8B-Instruct (GGUF)
+   mistral-7b-instruct-v0.2.Q4_K_M (GGUF)
    llama-cpp-python
    SentenceTransformer (all-MiniLM-L6-v2)
-Работа с текстом:
-   python-docx
-   numpy
-
 
 Архитектура:
 Пользователь
@@ -62,12 +58,12 @@ tourist_project/
 ├── homepage/
 │   ├── views.py           # Основная логика RAG
 │   ├── urls.py
-│   ├── templates/
-│   └── zapovedniki.docx   # Источник знаний
+│   └── templates/
+│   
 │
 ├── Llama_project/
 │   └── models/
-│       └── Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf
+│       └── mistral-7b-instruct-v0.2.Q4_K_M.gguf
 │
 ├── venv/
 ├── manage.py
@@ -76,7 +72,7 @@ tourist_project/
 
 
 Источник данных:
-Все знания хранятся в одном файле: zapovedniki.docx
+Все знания хранятся в одном файле: reserves_database.json
 Он содержит:
 описание Таймырского заповедника;
 данные о других заповедниках России;
@@ -104,25 +100,16 @@ python --version -> Python 3.10.x
 pip install django llama-cpp-python sentence-transformers python-docx numpy
 python manage.py runserver
 
-
-
 Известные проблемы:
-При слишком большом контексте:
-модель может долго отвечать;
-
-При плохой структуре Word-файла:
-возможны логические ошибки;
-
-Word ≠ идеальный формат для базы знаний.
-
+1) Галлюцинация;
+При плохой структуре JSON-файла:
+2) Возможны логические ошибки;
 
 Планы по улучшению
-Перевод данных из .docx → .json
 Кэширование embedding’ов
 Улучшенная тематическая фильтрация
 Админ-панель для редактирования данных
 История диалогов
-
 
 Назначение проекта:
 Проект подходит для:
